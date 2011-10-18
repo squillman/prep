@@ -14,7 +14,7 @@ namespace prep.infrastructure.sorting
         public static IComparer<ItemToSort> by<PropertyType>(Func<ItemToSort, PropertyType> accessor)
             where PropertyType : IComparable<PropertyType>
         {
-            throw new NotImplementedException();
+            return new AscendingSort<ItemToSort, PropertyType>(accessor);
         }
     }
 }
