@@ -1,4 +1,5 @@
 ﻿using System;
+using prep.infrastructure.ranges;
 
 namespace prep.infrastructure.filtering
 {
@@ -29,7 +30,7 @@ namespace prep.infrastructure.filtering
 
         public IMatchA<ItemToFilter> greater_than(PropertyType value)
        {
-            return create_match_using(new IsGreaterThan<PropertyType>(value));
+            return create_match_using(new FallsInRange<PropertyType>(new RangeWithNoUpperBound<PropertyType>(value)));
         }
 
         public IMatchA<ItemToFilter> create_match_using(IMatchA<PropertyType> criteria)
@@ -39,7 +40,7 @@ namespace prep.infrastructure.filtering
 
         public IMatchA<ItemToFilter> between(PropertyType start, PropertyType end)
         {
-            return create_match_using(new IsBetween<PropertyType>(start, end));
+            return create_match_using(new FallsInRange<PropertyType>(new InclusiveRange<PropertyType>(start, end)));
         }
 
         public IMatchA<ItemToFilter> create_match_using(Condition<ItemToFilter> condition)

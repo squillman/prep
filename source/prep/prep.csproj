@@ -75,13 +75,16 @@
     <Compile Include="infrastructure\filtering\EqualToAny.cs" />
     <Compile Include="infrastructure\filtering\ICreateMatchers.cs" />
     <Compile Include="infrastructure\filtering\IMatchA.cs" />
-    <Compile Include="infrastructure\filtering\IsBetween.cs" />
+    <Compile Include="infrastructure\filtering\FallsInRange.cs" />
     <Compile Include="infrastructure\filtering\IsGreaterThan.cs" />
     <Compile Include="infrastructure\filtering\NegatingMatcher.cs" />
     <Compile Include="infrastructure\filtering\NeverMatches.cs" />
     <Compile Include="infrastructure\filtering\OrMatch.cs" />
     <Compile Include="infrastructure\filtering\PropertyMatch.cs" />
     <Compile Include="infrastructure\filtering\Where.cs" />
+    <Compile Include="infrastructure\ranges\IContainValues.cs" />
+    <Compile Include="infrastructure\ranges\InclusiveRange.cs" />
+    <Compile Include="infrastructure\ranges\RangeWithNoUpperBound.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
