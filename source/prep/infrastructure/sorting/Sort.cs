@@ -7,7 +7,7 @@ namespace prep.infrastructure.sorting
     {
         public static IComparer<ItemToSort> by_descending<PropertyType>(Func<ItemToSort, PropertyType> accessor)
         {
-            throw new NotImplementedException();
+            return new DescendingSort<ItemToSort,PropertyType>();
         }
     }
 }
