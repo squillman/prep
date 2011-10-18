@@ -88,6 +88,7 @@
     <Compile Include="infrastructure\ranges\RangeWithNoUpperBound.cs" />
     <Compile Include="infrastructure\sorting\AscendingSort.cs" />
     <Compile Include="infrastructure\sorting\DescendingSort.cs" />
+    <Compile Include="infrastructure\sorting\ReverseComparer.cs" />
     <Compile Include="infrastructure\sorting\Sort.cs" />
   </ItemGroup>
   <ItemGroup>
