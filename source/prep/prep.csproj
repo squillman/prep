@@ -86,8 +86,9 @@
     <Compile Include="infrastructure\ranges\IContainValues.cs" />
     <Compile Include="infrastructure\ranges\InclusiveRange.cs" />
     <Compile Include="infrastructure\ranges\RangeWithNoUpperBound.cs" />
-    <Compile Include="infrastructure\sorting\AscendingSort.cs" />
-    <Compile Include="infrastructure\sorting\OrderedPropertyComparer.cs" />
+    <Compile Include="infrastructure\sorting\ComparableComparer.cs" />
+    <Compile Include="infrastructure\sorting\FixedComparer.cs" />
+    <Compile Include="infrastructure\sorting\PropertyComparer.cs" />
     <Compile Include="infrastructure\sorting\ReverseComparer.cs" />
     <Compile Include="infrastructure\sorting\Sort.cs" />
   </ItemGroup>

@@ -11,15 +11,18 @@ namespace prep.infrastructure.sorting
             return new ReverseComparer<ItemToSort>(by(accessor));
         }
 
-        public static IComparer<ItemToSort> by<PropertyType>(Func<ItemToSort, PropertyType> accessor,params PropertyType[] order)
+        public static IComparer<ItemToSort> by<PropertyType>(Func<ItemToSort, PropertyType> accessor,
+                                                             params PropertyType[] order)
         {
-            return new OrderedPropertyComparer<ItemToSort, PropertyType>(accessor, order);
+            return new PropertyComparer<ItemToSort, PropertyType>(accessor,
+                                                                  new FixedComparer<PropertyType>(order));
         }
 
         public static IComparer<ItemToSort> by<PropertyType>(Func<ItemToSort, PropertyType> accessor)
             where PropertyType : IComparable<PropertyType>
         {
-            return new AscendingSort<ItemToSort, PropertyType>(accessor);
+            return new PropertyComparer<ItemToSort, PropertyType>(accessor,
+                                                                  new ComparableComparer<PropertyType>());
         }
     }
 }
