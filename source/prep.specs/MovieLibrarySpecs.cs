@@ -323,14 +323,14 @@ namespace prep.specs
                 //Universal
                 //Disney
                 //Paramount
-                var comparer = Sort<Movie>.by(x => x.production_studio, 
+                var comparer = Sort<Movie>.by(x => x.production_studio,
                                               ProductionStudio.MGM,
                                               ProductionStudio.Pixar,
                                               ProductionStudio.Dreamworks,
                                               ProductionStudio.Universal,
                                               ProductionStudio.Disney,
                                               ProductionStudio.Paramount)
-                                           .then_by(x => x.date_published);
+                                            .then_by(x => x.date_published);
 
                 var results = sut.all_movies().sort_using(comparer);
 
