@@ -6,10 +6,12 @@ namespace prep.infrastructure.filtering
     public class CriteriaFactory<ItemToFilter, PropertyType> : ICreateMatchers<ItemToFilter, PropertyType>
     {
         Func<ItemToFilter, PropertyType> accessor;
+        private readonly MatchFactory<ItemToFilter> matchFactory;
 
-        public CriteriaFactory(Func<ItemToFilter, PropertyType> accessor)
+        public CriteriaFactory(Func<ItemToFilter, PropertyType> accessor,MatchFactory<ItemToFilter> matchFactory )
         {
             this.accessor = accessor;
+            this.matchFactory = matchFactory;
         }
 
         public IMatchA<ItemToFilter> equal_to(PropertyType value)
@@ -26,9 +28,10 @@ namespace prep.infrastructure.filtering
         {
             return equal_to(value).not();
         }
+
         public IMatchA<ItemToFilter> create_match_using(Condition<ItemToFilter> condition)
         {
-            return new AnonymousMatch<ItemToFilter>(condition);
+            return matchFactory.CreateUsing(condition);
         } 
     }
 }

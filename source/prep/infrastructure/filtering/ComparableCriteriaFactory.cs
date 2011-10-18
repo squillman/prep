@@ -32,17 +32,22 @@ namespace prep.infrastructure.filtering
 
         public IMatchA<ItemToFilter> greater_than(PropertyType value)
        {
-            return create_match_using(x => accessor(x).CompareTo(value) > 0);
-        }
+           return original.create_match_using(x => compare_to_value(x, value) > 0);
+       }
 
         public IMatchA<ItemToFilter> between(PropertyType start, PropertyType end)
         {
-            return create_match_using(x => accessor(x).CompareTo(start) >= 0 && accessor(x).CompareTo(end) <= 0);
+            return original.create_match_using(x => compare_to_value(x, start) >= 0 && compare_to_value(x, end) <= 0);
         }
 
         public IMatchA<ItemToFilter> create_match_using(Condition<ItemToFilter> condition)
         {
             return original.create_match_using(condition);
+        }
+
+        private int compare_to_value(ItemToFilter item,PropertyType value)
+        {
+            return accessor(item).CompareTo(value);
         }
     }
 }
