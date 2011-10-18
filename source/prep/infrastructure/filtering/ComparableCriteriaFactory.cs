@@ -32,12 +32,17 @@ namespace prep.infrastructure.filtering
 
         public IMatchA<ItemToFilter> greater_than(PropertyType value)
         {
-            return new AnonymousMatch<ItemToFilter>(x => accessor(x).CompareTo(value) > 0);
+            return make_anonymous_match(x => accessor(x).CompareTo(value) > 0);
         }
 
         public IMatchA<ItemToFilter> between(PropertyType start, PropertyType end)
         {
-            return new AnonymousMatch<ItemToFilter>(x => accessor(x).CompareTo(start) >= 0 && accessor(x).CompareTo(end) <= 0);
+            return make_anonymous_match(x => accessor(x).CompareTo(start) >= 0 && accessor(x).CompareTo(end) <= 0);
         }
+
+        private AnonymousMatch<ItemToFilter> make_anonymous_match(Condition<ItemToFilter> condition)
+        {
+            return new AnonymousMatch<ItemToFilter>(condition);
+        } 
     }
 }
