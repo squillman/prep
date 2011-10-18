@@ -8,5 +8,12 @@ namespace prep.infrastructure.filtering
         {
             return new FilteringExtensionPoint<ItemToFilter, PropertyType>(accessor);
         }
+
+        public static IMatchA<ItemToFilter> not
+        {
+            get
+            {
+            }
+        } 
     }
 }
