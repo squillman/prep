@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 namespace prep.infrastructure.filtering
 {
@@ -19,16 +18,22 @@ namespace prep.infrastructure.filtering
 
         public IMatchA<ItemToFilter> equal_to_any(params PropertyType[] values)
         {
-            return create_match_using(x => new List<PropertyType>(values).Contains(accessor(x)));
+            return create_match_using(new EqualToAny<PropertyType>(values));
         }
 
         public IMatchA<ItemToFilter> not_equal_to(PropertyType value)
         {
             return equal_to(value).not();
         }
+
         public IMatchA<ItemToFilter> create_match_using(Condition<ItemToFilter> condition)
         {
             return new AnonymousMatch<ItemToFilter>(condition);
-        } 
+        }
+
+        public IMatchA<ItemToFilter> create_match_using(IMatchA<PropertyType> criteria)
+        {
+            return new PropertyMatch<ItemToFilter, PropertyType>(accessor, criteria);
+        }
     }
 }

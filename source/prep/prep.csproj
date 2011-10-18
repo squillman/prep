@@ -72,11 +72,15 @@
     <Compile Include="infrastructure\filtering\CriteriaExtensions.cs" />
     <Compile Include="infrastructure\EnumerableExtensions.cs" />
     <Compile Include="infrastructure\filtering\CriteriaFactory.cs" />
+    <Compile Include="infrastructure\filtering\EqualToAny.cs" />
     <Compile Include="infrastructure\filtering\ICreateMatchers.cs" />
     <Compile Include="infrastructure\filtering\IMatchA.cs" />
+    <Compile Include="infrastructure\filtering\IsBetween.cs" />
+    <Compile Include="infrastructure\filtering\IsGreaterThan.cs" />
     <Compile Include="infrastructure\filtering\NegatingMatcher.cs" />
     <Compile Include="infrastructure\filtering\NeverMatches.cs" />
     <Compile Include="infrastructure\filtering\OrMatch.cs" />
+    <Compile Include="infrastructure\filtering\PropertyMatch.cs" />
     <Compile Include="infrastructure\filtering\Where.cs" />
   </ItemGroup>
   <ItemGroup>

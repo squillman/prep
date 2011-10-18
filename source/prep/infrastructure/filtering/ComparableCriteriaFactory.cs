@@ -5,13 +5,10 @@ namespace prep.infrastructure.filtering
     public class ComparableCriteriaFactory<ItemToFilter, PropertyType> : ICreateMatchers<ItemToFilter, PropertyType>
         where PropertyType : IComparable<PropertyType>
     {
-        Func<ItemToFilter, PropertyType> accessor;
         ICreateMatchers<ItemToFilter, PropertyType> original;
 
-        public ComparableCriteriaFactory(Func<ItemToFilter, PropertyType> accessor,
-                                         ICreateMatchers<ItemToFilter, PropertyType> original)
+        public ComparableCriteriaFactory(ICreateMatchers<ItemToFilter, PropertyType> original)
         {
-            this.accessor = accessor;
             this.original = original;
         }
 
@@ -32,12 +29,17 @@ namespace prep.infrastructure.filtering
 
         public IMatchA<ItemToFilter> greater_than(PropertyType value)
        {
-            return create_match_using(x => accessor(x).CompareTo(value) > 0);
+            return create_match_using(new IsGreaterThan<PropertyType>(value));
+        }
+
+        public IMatchA<ItemToFilter> create_match_using(IMatchA<PropertyType> criteria)
+        {
+            return original.create_match_using(criteria);
         }
 
         public IMatchA<ItemToFilter> between(PropertyType start, PropertyType end)
         {
-            return create_match_using(x => accessor(x).CompareTo(start) >= 0 && accessor(x).CompareTo(end) <= 0);
+            return create_match_using(new IsBetween<PropertyType>(start, end));
         }
 
         public IMatchA<ItemToFilter> create_match_using(Condition<ItemToFilter> condition)
