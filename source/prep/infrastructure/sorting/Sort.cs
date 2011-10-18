@@ -13,7 +13,7 @@ namespace prep.infrastructure.sorting
 
         public static IComparer<ItemToSort> by<PropertyType>(Func<ItemToSort, PropertyType> accessor,params PropertyType[] order)
         {
-            throw new NotImplementedException();
+            return new OrderedPropertyComparer<ItemToSort, PropertyType>(accessor, order);
         }
 
         public static IComparer<ItemToSort> by<PropertyType>(Func<ItemToSort, PropertyType> accessor)
