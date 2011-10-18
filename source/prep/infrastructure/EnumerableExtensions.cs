@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using prep.infrastructure.filtering;
+using System.Linq;
 
 namespace prep.infrastructure
 {
@@ -8,17 +8,21 @@ namespace prep.infrastructure
     {
         public static IEnumerable<T> one_at_a_time<T>(this IEnumerable<T> items)
         {
-            foreach (var item in items) yield return item;
+            return items.Where(x => true);
         }
 
-        public static IEnumerable<ItemToMatch> all_items_matching<ItemToMatch >(this IEnumerable<ItemToMatch> items, IMatchA<ItemToMatch> criteria)
+        public static IEnumerable<ItemToMatch> all_items_matching<ItemToMatch>(this IEnumerable<ItemToMatch> items,
+                                                                               IMatchA<ItemToMatch> criteria)
         {
-            return items.all_items_matching(criteria.matches);
+            return items.Where(criteria.matches);
         }
 
-        static IEnumerable<ItemToMatch> all_items_matching<ItemToMatch >(this IEnumerable<ItemToMatch> items, Predicate<ItemToMatch> condition)
+        public static IEnumerable<ItemToSort> sort_using<ItemToSort>(this IEnumerable<ItemToSort> items,
+                                                                     IComparer<ItemToSort> comparer)
         {
-            foreach (var item_to_match in items) if(condition(item_to_match)) yield return item_to_match;
+            var sorted = new List<ItemToSort>(items);
+            sorted.Sort(comparer);
+            return sorted;
         }
     }
 }

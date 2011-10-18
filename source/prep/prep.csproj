@@ -68,6 +68,7 @@
     <Compile Include="infrastructure\filtering\BinaryMatch.cs" />
     <Compile Include="infrastructure\filtering\CriteriaExtensions.cs" />
     <Compile Include="infrastructure\EnumerableExtensions.cs" />
+    <Compile Include="infrastructure\filtering\DateFilteringExtensions.cs" />
     <Compile Include="infrastructure\filtering\EqualToAny.cs" />
     <Compile Include="infrastructure\filtering\FilteringExtensionPoint.cs" />
     <Compile Include="infrastructure\filtering\FilteringExtensions.cs" />
@@ -81,9 +82,11 @@
     <Compile Include="infrastructure\filtering\OrMatch.cs" />
     <Compile Include="infrastructure\filtering\PropertyMatch.cs" />
     <Compile Include="infrastructure\filtering\Where.cs" />
+    <Compile Include="infrastructure\filtering\YearOfDateIsGreaterThan.cs" />
     <Compile Include="infrastructure\ranges\IContainValues.cs" />
     <Compile Include="infrastructure\ranges\InclusiveRange.cs" />
     <Compile Include="infrastructure\ranges\RangeWithNoUpperBound.cs" />
+    <Compile Include="infrastructure\sorting\Sort.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

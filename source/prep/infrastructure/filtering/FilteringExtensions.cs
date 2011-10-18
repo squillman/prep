@@ -26,14 +26,4 @@ namespace prep.infrastructure.filtering
         }
 
     }
-
-    public static class DateFilteringExtensions
-    {
-        public static IMatchA<ItemToFilter> greater_than<ItemToFilter>(this IProvideAccessToFiltering<ItemToFilter, DateTime> extension, int value)
-        {
-            return
-                extension.create_match_using(
-                    new FallsInRange<DateTime>(new RangeWithNoUpperBound<DateTime>(value)));
-        } 
-    }
 }
