@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using prep.infrastructure.filtering;
 
 namespace prep.infrastructure
@@ -15,7 +16,7 @@ namespace prep.infrastructure
             return items.all_items_matching(criteria.matches);
         }
 
-        public static IEnumerable<ItemToMatch> all_items_matching<ItemToMatch >(this IEnumerable<ItemToMatch> items, Condition<ItemToMatch> condition)
+        static IEnumerable<ItemToMatch> all_items_matching<ItemToMatch >(this IEnumerable<ItemToMatch> items, Predicate<ItemToMatch> condition)
         {
             foreach (var item_to_match in items) if(condition(item_to_match)) yield return item_to_match;
         }

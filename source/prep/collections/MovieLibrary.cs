@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using prep.infrastructure;
-using prep.infrastructure.filtering;
 
 namespace prep.collections
 {
@@ -36,58 +35,12 @@ namespace prep.collections
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Movie> get_all_movies_matching(Condition<Movie> condition)
-        {
-            return movies.all_items_matching(condition);
-        }
-
-
-        bool is_published_by_pixar_or_disney(Movie movie)
-        {
-            return movie.production_studio == ProductionStudio.Pixar || movie.production_studio == ProductionStudio.Disney;
-        }
-
-        public IEnumerable<Movie> all_movies_published_by_pixar()
-        {
-            return get_all_movies_matching(movie => movie.production_studio == ProductionStudio.Pixar);
-        }
-
-        public IEnumerable<Movie> all_movies_published_by_pixar_or_disney()
-        {
-            return get_all_movies_matching(is_published_by_pixar_or_disney);
-        }
-
         public IEnumerable<Movie> sort_all_movies_by_title_ascending()
         {
             throw new NotImplementedException();
         }
 
         public IEnumerable<Movie> sort_all_movies_by_movie_studio_and_year_published()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Movie> all_movies_not_published_by_pixar()
-        {
-            return get_all_movies_matching(m => m.production_studio != ProductionStudio.Pixar);
-        }
-
-        public IEnumerable<Movie> all_movies_published_after(int year)
-        {
-            return get_all_movies_matching(m => m.date_published.Year > year);
-        }
-
-        public IEnumerable<Movie> all_movies_published_between_years(int startingYear, int endingYear)
-        {
-            return get_all_movies_matching(m => m.date_published.Year >= startingYear && m.date_published.Year <= endingYear);
-        }
-
-        public IEnumerable<Movie> all_kid_movies()
-        {
-            return get_all_movies_matching(x => x.genre == Genre.kids);
-        }
-
-        public IEnumerable<Movie> all_action_movies()
         {
             throw new NotImplementedException();
         }
@@ -101,6 +54,5 @@ namespace prep.collections
         {
             throw new NotImplementedException();
         }
-
     }
 }
