@@ -1,0 +1,5 @@
+C:\course\prep\codekata.tests\bin\Debug\codekata.tests.dll
+C:\course\prep\codekata.tests\bin\Debug\codekata.tests.pdb
+C:\course\prep\codekata.tests\obj\Debug\ResolveAssemblyReference.cache
+C:\course\prep\codekata.tests\obj\Debug\codekata.tests.dll
+C:\course\prep\codekata.tests\obj\Debug\codekata.tests.pdb
