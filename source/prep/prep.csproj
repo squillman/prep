@@ -64,7 +64,9 @@
     <Compile Include="collections\MovieLibrary.cs" />
     <Compile Include="collections\ProductionStudio.cs" />
     <Compile Include="collections\ReadOnlySetOf.cs" />
-    <Compile Include="infrastructure\sorting\EnumerableDecorator.cs" />
+    <Compile Include="infrastructure\sorting\ComparisonExtensions.cs" />
+    <Compile Include="infrastructure\sorting\IApplyASortDirection.cs" />
+    <Compile Include="infrastructure\sorting\SortedEnumerable.cs" />
     <Compile Include="infrastructure\filtering\AndMatch.cs" />
     <Compile Include="infrastructure\filtering\BinaryMatch.cs" />
     <Compile Include="infrastructure\filtering\CriteriaExtensions.cs" />
@@ -92,7 +94,6 @@
     <Compile Include="infrastructure\sorting\FixedComparer.cs" />
     <Compile Include="infrastructure\sorting\PropertyComparer.cs" />
     <Compile Include="infrastructure\sorting\ReverseComparer.cs" />
-    <Compile Include="infrastructure\sorting\ComparerBuilder.cs" />
     <Compile Include="infrastructure\sorting\Sort.cs" />
   </ItemGroup>
   <ItemGroup>

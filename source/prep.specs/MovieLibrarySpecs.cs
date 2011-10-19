@@ -272,7 +272,7 @@ namespace prep.specs
 
             It should_be_able_to_sort_all_movies_by_title_descending = () =>
             {
-                var comparer = Sort<Movie>.by_descending(x => x.title);
+                var comparer = Sort<Movie>.by(x => x.title,SortDirections.descending);
 
                 var results = sut.all_movies().sort_using(comparer);
 
@@ -283,7 +283,7 @@ namespace prep.specs
 
             It should_be_able_to_sort_all_movies_by_title_ascending = () =>
             {
-                var comparer = Sort<Movie>.by(x => x.title);
+                var comparer = Sort<Movie>.by(x => x.title,SortDirections.ascending);
 
                 var results = sut.all_movies().sort_using(comparer);
 
@@ -294,7 +294,7 @@ namespace prep.specs
 
             It should_be_able_to_sort_all_movies_by_date_published_descending = () =>
             {
-                var comparer = Sort<Movie>.by_descending(x => x.date_published);
+                var comparer = Sort<Movie>.by(x => x.date_published,SortDirections.descending);
 
                 var results = sut.all_movies().sort_using(comparer);
 
@@ -305,9 +305,10 @@ namespace prep.specs
 
             It should_be_able_to_sort_all_movies_by_date_published_ascending = () =>
             {
-                var comparer = Sort<Movie>.by(x => x.date_published);
+                var comparer = Sort<Movie>.by(x => x.date_published,SortDirections.ascending);
 
                 var results = sut.all_movies().sort_using(comparer);
+
 
                 results.ShouldContainOnlyInOrder(indiana_jones_and_the_temple_of_doom, a_bugs_life,
                                                  pirates_of_the_carribean, cars, the_ring, shrek,
@@ -324,13 +325,13 @@ namespace prep.specs
                 //Disney
                 //Paramount
                 var results = sut.all_movies().order_by(x => x.production_studio,
-                                              ProductionStudio.MGM,
-                                              ProductionStudio.Pixar,
-                                              ProductionStudio.Dreamworks,
-                                              ProductionStudio.Universal,
-                                              ProductionStudio.Disney,
-                                              ProductionStudio.Paramount)
-                                            .then_by(x => x.date_published);
+                                                        ProductionStudio.MGM,
+                                                        ProductionStudio.Pixar,
+                                                        ProductionStudio.Dreamworks,
+                                                        ProductionStudio.Universal,
+                                                        ProductionStudio.Disney,
+                                                        ProductionStudio.Paramount)
+                    .then_by(x => x.date_published);
 
 
                 /* should return a set of results 

@@ -27,10 +27,5 @@ namespace prep.infrastructure
             return sorted;
         }
 
-        public static EnumerableDecorator<ItemToSort> order_by<ItemToSort, PropertyType>(this IEnumerable<ItemToSort> items,
-                                                                     Func<ItemToSort, PropertyType> accessor, params PropertyType[] order)
-        {
-            return new EnumerableDecorator<ItemToSort>(new List<ItemToSort>(items), Sort<ItemToSort>.by(accessor, order));
-        }
     }
 }
