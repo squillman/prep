@@ -323,7 +323,7 @@ namespace prep.specs
                 //Universal
                 //Disney
                 //Paramount
-                var comparer = Sort<Movie>.by(x => x.production_studio,
+                var results = sut.all_movies().order_by(x => x.production_studio,
                                               ProductionStudio.MGM,
                                               ProductionStudio.Pixar,
                                               ProductionStudio.Dreamworks,
@@ -332,7 +332,6 @@ namespace prep.specs
                                               ProductionStudio.Paramount)
                                             .then_by(x => x.date_published);
 
-                var results = sut.all_movies().sort_using(comparer);
 
                 /* should return a set of results 
                  * in the collection sorted by the rating of the production studio (not the movie rating) and year published. for this exercise you need to take the studio ratings

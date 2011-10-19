@@ -91,6 +91,7 @@
     <Compile Include="infrastructure\sorting\FixedComparer.cs" />
     <Compile Include="infrastructure\sorting\PropertyComparer.cs" />
     <Compile Include="infrastructure\sorting\ReverseComparer.cs" />
+    <Compile Include="infrastructure\sorting\ComparerBuilder.cs" />
     <Compile Include="infrastructure\sorting\Sort.cs" />
   </ItemGroup>
   <ItemGroup>
