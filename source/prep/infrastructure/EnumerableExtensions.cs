@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using prep.infrastructure.filtering;
 using System.Linq;
+using prep.infrastructure.sorting;
 
 namespace prep.infrastructure
 {
@@ -24,5 +26,32 @@ namespace prep.infrastructure
             sorted.Sort(comparer);
             return sorted;
         }
+
+
+        public static IEnumerable<ItemToSort> order_by<ItemToSort, PropertyType>(this IEnumerable<ItemToSort> items, Func<ItemToSort,PropertyType> accessor)
+            where PropertyType : IComparable<PropertyType>
+        {
+            var sorted = new List<ItemToSort>(items);
+            sorted.Sort(new PropertyComparer<ItemToSort, PropertyType>(accessor, new ComparableComparer<PropertyType>()));
+            return sorted;
+        }
+
+        public static IEnumerable<ItemToSort> order_by<ItemToSort, PropertyType>(this IEnumerable<ItemToSort> items, Func<ItemToSort, PropertyType> accessor, params PropertyType[] order)
+        {
+            var sorted = new List<ItemToSort>(items);
+            sorted.Sort(new PropertyComparer<ItemToSort,PropertyType>(accessor,new FixedComparer<PropertyType>(order)));
+            return sorted;
+        }
+
+
+
+
+        public static IEnumerable<ItemToSort> then_by<ItemToSort, PropertyType>(this IEnumerable<ItemToSort> items,
+                                                                                Func<ItemToSort, PropertyType> accessor)
+            where PropertyType : IComparable<PropertyType>
+        {
+            var sorted = new List<ItemToSort>(items);
+            return sorted;
+        } 
     }
 }

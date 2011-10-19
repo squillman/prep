@@ -332,7 +332,6 @@ namespace prep.specs
                                               ProductionStudio.Paramount)
                                             .then_by(x => x.date_published);
 
-
                 /* should return a set of results 
                  * in the collection sorted by the rating of the production studio (not the movie rating) and year published. for this exercise you need to take the studio ratings
                  * into effect, which means that you first have to sort by movie studio (taking the ranking into account) and then by the
@@ -342,6 +341,8 @@ namespace prep.specs
                 results.ShouldContainOnlyInOrder(the_ring, theres_something_about_mary, a_bugs_life, cars, shrek,
                                                  indiana_jones_and_the_temple_of_doom,
                                                  pirates_of_the_carribean);
+
+                //results.ShouldContainOnlyInOrder(the_ring,theres_something_about_mary,cars,a_bugs_life,shrek,indiana_jones_and_the_temple_of_doom,pirates_of_the_carribean);
             };
         }
 
