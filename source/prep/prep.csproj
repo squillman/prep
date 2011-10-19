@@ -64,6 +64,7 @@
     <Compile Include="collections\MovieLibrary.cs" />
     <Compile Include="collections\ProductionStudio.cs" />
     <Compile Include="collections\ReadOnlySetOf.cs" />
+    <Compile Include="infrastructure\sorting\EnumerableDecorator.cs" />
     <Compile Include="infrastructure\filtering\AndMatch.cs" />
     <Compile Include="infrastructure\filtering\BinaryMatch.cs" />
     <Compile Include="infrastructure\filtering\CriteriaExtensions.cs" />

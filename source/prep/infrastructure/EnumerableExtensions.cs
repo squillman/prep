@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using prep.infrastructure.filtering;
 using System.Linq;
+using prep.infrastructure.sorting;
 
 namespace prep.infrastructure
 {
@@ -23,6 +25,12 @@ namespace prep.infrastructure
             var sorted = new List<ItemToSort>(items);
             sorted.Sort(comparer);
             return sorted;
+        }
+
+        public static EnumerableDecorator<ItemToSort> order_by<ItemToSort, PropertyType>(this IEnumerable<ItemToSort> items,
+                                                                     Func<ItemToSort, PropertyType> accessor, params PropertyType[] order)
+        {
+            return new EnumerableDecorator<ItemToSort>(new List<ItemToSort>(items), Sort<ItemToSort>.by(accessor, order));
         }
     }
 }

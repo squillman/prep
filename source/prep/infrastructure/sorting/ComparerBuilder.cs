@@ -25,6 +25,13 @@ namespace prep.infrastructure.sorting
                                                                                  Sort<ItemToSort>.by(accessor, values)));
         }
 
+        public ComparerBuilder<ItemToSort> order_by<PropertyType>(Func<ItemToSort, PropertyType> accessor,
+                                                           params PropertyType[] values)
+        {
+            return
+                new ComparerBuilder<ItemToSort>(new CombinedComparer<ItemToSort>(initial,
+                                                                                 Sort<ItemToSort>.by(accessor, values)));
+        }
         public ComparerBuilder<ItemToSort> then_by<PropertyType>(Func<ItemToSort, PropertyType> accessor)
             where PropertyType : IComparable<PropertyType>
         {
