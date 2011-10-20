@@ -5,7 +5,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace prep.codekata.tuesday
+namespace prep.codekata
 {
     public class BloomFilter
     {

@@ -3,12 +3,23 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using prep.codekata.tuesday;
+using prep.codekata;
 
 namespace codekata.tests
 {
     [TestClass]
-    public class CodeKataTests
+    public class WeatherSpreadTests
+    {
+        [TestMethod]
+        public void can_read_file()
+        {
+            WeatherSpread ws = new WeatherSpread(@"C:\Users\squillman\Downloads\weather.dat");
+            Assert.AreEqual(ws.lines.Count,40);
+        }
+    }
+
+    [TestClass]
+    public class BloomFilterTests
     {
         [TestMethod]
         public void default_word_list_should_all_return_true()
