@@ -10,11 +10,22 @@ namespace codekata.tests
     [TestClass]
     public class WeatherSpreadTests
     {
+        private string filePath = @"C:\Users\squillman\Downloads\weather.dat";
+
         [TestMethod]
         public void can_read_file()
         {
-            WeatherSpread ws = new WeatherSpread(@"C:\Users\squillman\Downloads\weather.dat");
+            WeatherSpread ws = new WeatherSpread(filePath);
             Assert.AreEqual(ws.lines.Count,40);
+        }
+
+        [TestMethod]
+        public void can_get_headers()
+        {
+            WeatherSpread ws = new WeatherSpread(filePath);
+            Assert.AreEqual(ws.ColumnHeaders.Count,17);
+            Assert.AreEqual(ws.ColumnHeaders["MxT"],1);
+            Assert.AreEqual(ws.ColumnHeaders["PDir"],9);
         }
     }
 
